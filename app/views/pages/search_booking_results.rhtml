@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="/stylesheets/remodal.css"></link>
+<link rel="stylesheet" href="/stylesheets/remodal-default-theme.css"></link>
+
+<script type="text/javascript">
+  function editBooking(bookingID){
+    bookingIDinput = document.getElementById('booking_id');
+    bookingIDinput.value = bookingID;
+
+    editBookingForm = document.getElementById('editBookingForm');
+    editBookingForm.submit();
+  }
+
+  var currentbookingID;
+  function updateSelectedBookingID(bookingID){
+    currentbookingID = bookingID;
+    document.getElementById('cancelBookingInput').value = currentbookingID;
+  }
+</script>
+
+<style type="text/css">
+  #email, #password {
+    height: 23px;
+  }
+
+  form input, form textarea {
+    border: 1px solid #f1f1f1;
+  }
+
+  .button {
+    border-top: 1px solid #96d1f8;
+    background: #65a9d7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+    background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+    background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+    background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+    background: -o-linear-gradient(top, #3e779d, #65a9d7);
+    padding: 3px 14px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 17px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    border-top-color: #28597a;
+    background: #28597a;
+    color: #ccc;
+  }
+  .button:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+  }
+
+  .danger-btn{
+    background: -webkit-linear-gradient(top, #DC143C, #DC143C);
+    background: -moz-linear-gradient(top, #DC143C, #DC143C);
+    background: -ms-linear-gradient(top, #DC143C, #DC143C);
+    background: -o-linear-gradient(top, #DC143C, #DC143C);
+  }
+
+  .danger-btn:hover{
+    background: #8B3E2F;
+    color: white;
+  }
+
+  .remodal-bg.with-red-theme.remodal-is-opening,
+    .remodal-bg.with-red-theme.remodal-is-opened {
+      filter: none;
+    }
+
+    .remodal-overlay.with-red-theme {
+      background-color: #f44336;
+    }
+
+    .remodal.with-red-theme {
+      background: #fff;
+    }
+</style>
+<br />
+<span class="clearfix"></span>
+<section  class="content web-content container" style="text-align: center;">
+  <%
+  result = 'result'
+  if (@search_results.count == 0 || @search_results.count > 1)
+    result = 'results'
+  end
+%>
+  <h2><%= @search_results.count.to_s + ' ' + result %> found</h2>
+  <% unless @search_results.blank? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Car Type</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Phone #</th>
+          <th>Email</th>
+          <th colspan="2" style="text-align: center;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @search_results.each do |result| %>
+          <tr>
+            <td><%= result.car.name %></td>
+            <td><%= result.start_date %></td>
+            <td><%= result.end_date %></td>
+            <td><%= result.phone %></td>
+            <td><%= result.email %></td>
+            <td><button class="button" onclick="editBooking('<%= result.bookings_id %>')">Edit</button></td>
+            <td><button onmousedown="updateSelectedBookingID('<%=  result.id %>')"data-remodal-target="modal" class="button danger-btn">Cancel</button></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <form action="/edit_bookings" method="POST" style="display: none;" id="editBookingForm">
+      <input type="hidden" value="" id="booking_id" name="booking_id"></input>
+    </form>
+  <% end %>
+</section><br />
+
+<span class="clearfix"></span>
+
+<hr />
+<form id="cancelBookingForm" method="POST" action="/pages/cancel_booking">
+  <input type="hidden" value="" id="cancelBookingInput" name="booking_id"></input>
+</form>
+
+<span class="clearfix"></span>
+
+
+<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+  <div>
+    <h2 id="modal1Title">Cancel Booking</h2>
+    <p id="modal1Desc">
+     You are about to cancel the selected booking. Are you really sure?
+    </p>
+  </div>
+  <br>
+  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+</div>
+
+
+<!-- Events -->

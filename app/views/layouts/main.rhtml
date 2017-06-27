@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @title %></title>
+    <meta name="description" content="<%= site_description %>">
+    <meta name="keywords" content="<%= page_keywords %>">
+    <meta name="author" content="<%= author %>">
+    <meta name="google-site-verification" content="vprFnIAZEM5FDilhqFrGIzg2xUteF1t7gObSujZC-C8" />
+    <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/nivo-slider/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/nivo-slider/default/nivo-slider.css" type="text/css" media="screen" />
+
+    <style>
+      .p_Button, #wrapper404 ul .home {
+        background-color: #43667b;
+        height: 26px;
+        padding: 8px 15px;
+        width: 129px;
+      }
+
+      .span-8 {
+        width: 300px;
+      }
+
+      #three_parags {
+        border: none;
+      }
+
+      .p_Button{
+        background-color: #43667b;
+        height: 26px;
+        padding: 8px 15px;
+        width: 129px;
+        cursor: pointer;
+        color: white;
+      }
+
+      .p_Button:hover{
+        font-style: italic;
+      }
+
+      .web-content{
+        max-width: 100%;
+        word-wrap: break-word;
+      }
+
+      footer #top {
+        height: 151px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+  <header>
+    <div class="container">
+      <a href="/">
+        <h1>Bazooka</h1></a>
+      <nav>
+        <ul class="last">
+          <li class="active" id="home">
+            <a href="/">Home</a>
+          </li>
+          <li id="our_services">
+            <a href="/our_services">Our Services</a>
+          </li>
+          <li id="our_mission">
+            <a href="/our_mission">Our Mission</a>
+          </li>
+          <li id="about_us">
+            <a href="/about_us">About Us</a>
+          </li>
+          <li id="contact_us">
+            <a href="/contact_us">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <span class="clearfix"></span>
+  <%= yield %>
+
+  <section id="three_parags">
+    <div class="container">
+      <% @media.each do |media| %>
+        <div class="one_parag span-8">
+          <h2><%= media.name %></h2>
+          <img src="/uploads/<%= "#{media.car_id}-thumb.png" %>" class="top" alt="photo"/>
+          <h6><%= media.description %></h6>
+          <p>Car Type: <strong><%= media.name %></strong></p>
+          <p>Capacity: <strong><%= media.seats %></strong></p>
+          <p>Engine Size: <strong><%= media.engine_size %></strong></p>
+          <p>Status: <strong>Available</strong></p>
+          <div class="p_Button" onclick="window.location='/bookings/<%= media.car_id %>'">
+            <span>Book This One</span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </section>
+  <span class="clearfix"></span>
+
+  <span class="clearfix"></span>
+  <br /><br />
+  <hr />
+
+  <section id="from_blog" class="container">
+    <div class="part1 span-8">
+      <h2>Why choose us ?</h2>
+      <ul>
+        <% (@strengths.split(', ') rescue []).each do |strength| %>
+          <li><%=  strength %></li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+
+  <span class="clearfix"></span>
+
+  <span class="clearfix"></span>
+  <footer>
+    <div id="top">
+      <div class="">
+        <div id="footer_logo" class="span-8">logo</div>
+        <div id="social_icons" class="span-8">
+          <h2>Stay connected</h2>
+          <ul>
+            <li>
+              <a href="#"><img src="/images/SOCIAL-ICON_03.jpg" width="32" height="32" alt="facebook"/></a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="in_touch" class="span-8">
+          <h2>Get in touch</h2>
+          <p>
+            <b>email</b> : <%= @email %><br>
+            <b>Tel</b> : <%= @office_phone %> |
+            <b>Fax</b> : <%= @fax %></p>
+        </div>
+
+        <div id="in_touch" class="span-8">
+          <h2>Legal Information</h2>
+          <p>
+            <b><a href="/damage_and_management_policy">Damage Management Policy</a></b><br />
+            <b><a href="/deposit_policy">Deposit policy</a></b><br />
+            <b><a href="/protection_package_details">Protection Package Details</a></b><br />
+            <b><a href="/security_and_privacy_policy">Security and Privacy Policy</a></b><br />
+            <b><a href="/terms_and_conditions">Terms and Conditions</a></b><br />
+          </p>
+        </div>
+
+        <div class="span-8 last" id="in_touch ">
+          <h2>Bookings</h2>
+          <p>
+            <a href="/search_bookings">View my Bookings</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="bottom">
+      <span class="container clear">
+	Copyright 2016 all rights reserved
+        <span class="right last">Admin? :
+          <a href="/admin">Login</a></span>
+      </span>
+    </div>
+  </footer>
+  <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery.nivo.slider.js"></script>
+  <script type="text/javascript" src="/javascripts/remodal.js"></script>
+  <%= javascript_include_tag("zebra_datepicker") %>
+  <script type="text/javascript">
+    jQuery('.date-picker').Zebra_DatePicker({
+      //view : 'years',
+      //direction: ['<%=  (Date.today.beginning_of_year).strftime("%Y-%m-%d") %>', '<%=  (Date.today.end_of_year).strftime("%Y-%m-%d") %>']
+    });
+  </script>
+
+
+  <script>
+    jQuery(document).on('opening', '.remodal', function () {
+      console.log('opening');
+    });
+
+    jQuery(document).on('opened', '.remodal', function () {
+      console.log('opened');
+    });
+
+    jQuery(document).on('closing', '.remodal', function (e) {
+      console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+    });
+
+    jQuery(document).on('closed', '.remodal', function (e) {
+      console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+    });
+
+    jQuery(document).on('confirmation', '.remodal', function () {
+      console.log('confirmation');
+      document.getElementById('cancelBookingForm').submit();
+    });
+
+    jQuery(document).on('cancellation', '.remodal', function () {
+      console.log('cancellation');
+    });
+
+    //  Usage:
+    //  $(function() {
+    //
+    //    // In this case the initialization function returns the already created instance
+    //    var inst = $('[data-remodal-id=modal]').remodal();
+    //
+    //    inst.open();
+    //    inst.close();
+    //    inst.getState();
+    //    inst.destroy();
+    //  });
+
+    //  The second way to initialize:
+    $('[data-remodal-id=modal2]').remodal({
+      modifier: 'with-red-theme'
+    });
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83434524-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

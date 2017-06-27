@@ -1,6 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
-
+  map.login  '/login',  :controller => 'users', :action => 'login'
+  map.our_services  '/our_services',  :controller => 'pages', :action => 'our_services'
+  map.about_us  '/about_us',  :controller => 'pages', :action => 'about_us'
+  map.our_mission  '/our_mission',  :controller => 'pages', :action => 'our_mission'
+  map.gallery  '/gallery',  :controller => 'pages', :action => 'gallery'
+  map.contact_us  '/contact_us',  :controller => 'pages', :action => 'contact_us'
+  map.admin  '/admin',  :controller => 'admin', :action => 'home'
+  map.login '/login', :controller => 'users', :action => 'login'
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
@@ -17,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
@@ -31,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
+   map.root :controller => "pages", :action => "home"
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+  <!-- BEGIN HEAD-->
+  <head>
+
+    <meta charset="UTF-8" />
+    <title>Bantu Montors - Admin</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!--[if IE]>
+       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+       <![endif]-->
+    <!-- GLOBAL STYLES -->
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/MoneAdmin.css" />
+    <link rel="stylesheet" href="/assets/plugins/Font-Awesome/css/font-awesome.css" />
+    <!--END GLOBAL STYLES -->
+
+    <!-- PAGE LEVEL STYLES -->
+    <link rel="stylesheet" href="/assets/plugins/Font-Awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/assets/plugins/wysihtml5/dist/bootstrap-wysihtml5-0.0.2.css" />
+    <link rel="stylesheet" href="/assets/css/Markdown.Editor.hack.css" />
+    <link rel="stylesheet" href="/assets/plugins/CLEditor1_4_3/jquery.cleditor.css" />
+    <link rel="stylesheet" href="/assets/css/jquery.cleditor-hack.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap-wysihtml5-hack.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap-fileupload.min.css" />
+    <style>
+      ul.wysihtml5-toolbar > li {
+        position: relative;
+      }
+
+
+      .cleditorMain iframe{
+        height: 500px !important;
+      }
+    </style>
+
+    <!-- PAGE LEVEL STYLES -->
+    <!-- END PAGE LEVEL  STYLES -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <!-- END  HEAD-->
+  <!-- BEGIN BODY-->
+  <body class="padTop53 " >
+
+    <!-- MAIN WRAPPER -->
+    <div id="wrap">
+      <!-- HEADER SECTION -->
+      <div id="top">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
+          <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+            <i class="icon-align-justify"></i>
+          </a>
+
+          <ul class="nav navbar-top-links navbar-right">
+
+            <!--TASK SECTION -->
+            <li class="dropdown" onclick="window.location='/admin'">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="label label-danger"><%= @bookings.count %></span>   <i class="icon-eye-open"></i>&nbsp;
+              </a>
+            </li>
+
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
+              </a>
+
+              <ul class="dropdown-menu dropdown-user">
+                <li>
+                  <a href="/admin/change_password"><i class="icon-user"></i> Change Password </a>
+                </li>
+                <li>
+                  <a href="/admin/change_username"><i class="icon-gear"></i> Change Username </a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="/users/logout"><i class="icon-signout"></i> Logout </a>
+                </li>
+              </ul>
+
+            </li>
+            <!--END ADMIN SETTINGS -->
+          </ul>
+
+        </nav>
+
+      </div>
+
+      <div id="left">
+        <div class="media user-media well-small">
+          <br />
+          <div class="media-body">
+            <h5 class="media-heading"> Bantu Motors</h5>
+          </div>
+          <br />
+        </div>
+
+        <ul id="menu" class="collapse">
+          <li class="panel">
+            <a href="/admin" >
+              <i class="icon-home"></i> Home
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/our_services" >
+              <i class="icon-sort-by-attributes-alt"></i> Our Services
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/our_mission" >
+              <i class=" icon-flag"></i> Our Mission
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/about_us" >
+              <i class="icon-user"></i> About Us
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/contact_us" >
+              <i class="icon-pencil"></i> Contact Us
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/gallery" >
+              <i class="icon-picture"></i> Gallery
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/settings" >
+              <i class="icon-list-ul"></i> Settings
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/damage_and_management_policy" >
+              <i class="icon-medkit"></i>Damage and Management Policy
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/deposit_policy" >
+              <i class="icon-money"></i>Deposit Policy
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/protection_package_details" >
+              <i class="icon-anchor "></i> Protection Package Details
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/security_and_privacy_policy" >
+              <i class="icon-key"></i> Security And Privacy Policy
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/terms_and_conditions" >
+              <i class=" icon-list-ul"></i> Terms and Conditions
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/admin/company_description" >
+              <i class="icon-lightbulb"></i> Company's Description
+            </a>
+          </li>
+
+          <li class="panel">
+            <a href="/" >
+              <i class="icon-desktop"></i> Visit Web-site
+            </a>
+          </li>
+        </ul>
+
+      </div>
+      <!--END MENU SECTION -->
+
+
+      <!--PAGE CONTENT -->
+      <div id="content">
+
+        <div class="inner" style="min-height:1200px;">
+          <% if flash[:notice] %>
+          <br />
+            <div class="alert alert-success">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
+
+          <% if flash[:error] %>
+          <br />
+            <div class="alert alert-warning">
+              <%= flash[:error] %>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+
+
+
+
+      </div>
+      <!--END PAGE CONTENT -->
+
+      <div style="display: none;"><!-- REMOVING THIS SECTION THE EDITOR WITH A LOT OF TOOLBARS WAS NOT WORKING mangochiman-->
+        <div id="wmd-button-bar" class="btn-toolbar"></div>
+        <textarea class="wmd-input" rows="0" name="description" id="wmd-input">
+
+        </textarea>
+      </div>
+    </div>
+
+    <!--END MAIN WRAPPER -->
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <p>&copy;  mangochiman &nbsp;2016 &nbsp;</p>
+    </div>
+    <!--END FOOTER -->
+    <!-- GLOBAL SCRIPTS -->
+    <script src="/assets/plugins/jquery-2.0.3.min.js"></script>
+    <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <!-- END GLOBAL SCRIPTS -->
+
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/plugins/wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
+    <script src="/assets/plugins/bootstrap-wysihtml5-hack.js"></script>
+    <script src="/assets/plugins/CLEditor1_4_3/jquery.cleditor.min.js"></script>
+    <script src="/assets/plugins/pagedown/Markdown.Converter.js"></script>
+    <script src="/assets/plugins/pagedown/Markdown.Sanitizer.js"></script>
+    <script src="/assets/plugins/Markdown.Editor-hack.js"></script>
+    <script src="/assets/js/editorInit.js"></script>
+    <script src="/assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+      $(function () { formWysiwyg(); });
+    </script>
+  </body>
+  <!-- END BODY-->
+
+</html>
