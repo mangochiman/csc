@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.our_mission  '/our_mission',  :controller => 'pages', :action => 'our_mission'
   map.gallery  '/gallery',  :controller => 'pages', :action => 'gallery'
   map.contact_us  '/contact_us',  :controller => 'pages', :action => 'contact_us'
+  map.solutions  '/our_solutions',  :controller => 'pages', :action => 'our_solutions'
   map.admin  '/admin',  :controller => 'admin', :action => 'home'
   map.login '/login', :controller => 'users', :action => 'login'
   # Sample of regular route:
