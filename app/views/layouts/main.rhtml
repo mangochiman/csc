@@ -79,6 +79,12 @@
     <div id="tooplate_main">
 
       <div id="tooplate_content">
+        <% if flash[:notice] %>
+          <p style="color: green; font-weight: bold;"><%= flash[:notice] %></p>
+        <% end %>
+        <% if flash[:error] %>
+          <p style="color: red; font-weight: bold;"><%= flash[:error] %></p>
+        <% end %>
         <%= yield %>
 
       </div>
@@ -101,9 +107,9 @@
 
         <blockquote>
           <p>
-           We offer professional and expert advice in different areas of research that need critical attention.
-           Our main objective is to use research to provide economic, social and environmental solutions that
-           influence policy formulation and amendments in order to achieve economic growth.
+            We offer professional and expert advice in different areas of research that need critical attention.
+            Our main objective is to use research to provide economic, social and environmental solutions that
+            influence policy formulation and amendments in order to achieve economic growth.
           </p>
 
           <cite>Daisy - <span>CEO</span></cite>

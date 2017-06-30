@@ -72,7 +72,7 @@ class PagesController < ApplicationController
     render :layout => "main"
   end
 
-   def our_solutions
+  def our_solutions
     @title = "Creative Solutions Consulting Malawi - Solutios"
     @contact_us_page = Page.find_by_page_type('contact_us')
     @email = Setting.find_by_key('email').value rescue ''
@@ -82,6 +82,21 @@ class PagesController < ApplicationController
     @fax = Setting.find_by_key('fax').value rescue ''
     @company_description = Page.find_by_page_type('company_description').content rescue ''
     render :layout => "main"
+  end
+
+  def send_message
+    contact = Contact.new
+    contact.author = params[:author]
+    contact.email = params[:email]
+    contact.subject = params[:subject]
+    contact.message = params[:text]
+    if (contact.save)
+      flash[:notice] = "Your message is sent. Thank you for your feedback."
+      redirect_to("/contact_us") and return
+    else
+      flash[:error] = "Failed to send your message. Try again"
+      redirect_to("/contact_us") and return
+    end
   end
 
 end
