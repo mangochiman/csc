@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.solutions  '/our_solutions',  :controller => 'pages', :action => 'our_solutions'
   map.admin  '/admin',  :controller => 'admin', :action => 'home'
   map.login '/login', :controller => 'users', :action => 'login'
+  map.send_message '/send_message', :controller => 'pages', :action => 'send_message'
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
