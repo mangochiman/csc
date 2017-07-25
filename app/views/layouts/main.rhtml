@@ -24,14 +24,17 @@
 
       #header_phone_no span {
         font-size: 23px;
-       
+
       }
 
       #header_phone_no span a {
         text-decoration: none;
         color: #019ED5 !important;
       }
-      
+
+      .hidden{
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -105,13 +108,16 @@
 
         <h2>Our Core Values</h2>
 
-        <ul class="tooplate_list">
-          <li><a href="#">Excellency</a></li>
-          <li><a href="#">Honesty</a></li>
-          <li><a href="#">Creativity</a></li>
-          <li><a href="#">Quality</a></li>
+        <ul class="tooplate_list core-values">
+          <li><a href="#" onclick="expandThis('excellency');">Excellency</a></li>
+          <span id="excellency" class="hidden">We believe in persistently creating better ways of doing the work we do in order to always excel</span>
+          <li><a href="#" onclick="expandThis('honesty');">Honesty</a></li>
+          <span id="honesty" class="hidden">We believe in engaging in honest transactions that give a true reflection of a situation</span>
+          <li><a href="#" onclick="expandThis('creativity');">Creativity</a></li>
+          <span id="creativity" class="hidden">CSC promotes a creative work environment where employees are able to come up with innovative solutions</span>
+          <li><a href="#" onclick="expandThis('quality');">Quality</a></li>
+          <span id="quality" class="hidden">CSC believes in producing high quality work</span>
         </ul>
-        <div class="button"><a href="#">View All</a></div>
 
         <div class="cleaner_h60"></div>
 
@@ -142,8 +148,23 @@
       </div> <!-- end of tooplate_footer -->
 
     </div>
-    <script>
-      
+    <script type="text/javascript">
+      function expandThis(id){
+        jQuery( "#" + id ).toggleClass("hidden shown");
+        if (jQuery( "#" + id ).hasClass( "hidden" )){
+          jQuery( "#" + id ).hide( "slow" );
+        }else{
+          jQuery( "#" + id ).show( "slow" );
+        }
+        
+      }
+
+      window.onload = function(){
+        jQuery('.core-values li a').click(function(e) {
+          e.preventDefault();
+        });
+
+      }
     </script>
   </body>
 </html>
