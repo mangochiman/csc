@@ -115,6 +115,7 @@ class PagesController < ApplicationController
     contact.subject = params[:subject]
     contact.message = params[:text]
     if (contact.save)
+      Contact.send_email(params)
       flash[:notice] = "Your message is sent. Thank you for your feedback."
       redirect_to("/contact_us") and return
     else
