@@ -114,8 +114,17 @@ class PagesController < ApplicationController
     contact.email = params[:email]
     contact.subject = params[:subject]
     contact.message = params[:text]
+
+    passed_params = {
+      "receiver" => "webtechmw@gmail.com",
+      "message" => params[:text],
+      "subject" => params[:subject],
+      "author_name" => params[:author],
+      "author_email" => params[:email]
+    }
+
     if (contact.save)
-      Contact.send_email(params)
+      Contact.send_email(passed_params)
       flash[:notice] = "Your message is sent. Thank you for your feedback."
       redirect_to("/contact_us") and return
     else
