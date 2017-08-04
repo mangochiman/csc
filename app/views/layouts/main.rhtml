@@ -6,7 +6,9 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link href="/2033_business/tooplate_style.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/simpletextrotator.css" rel="stylesheet" type="text/css" />
     <script src="/assets/plugins/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.simple-text-rotator.js"></script>
     <style>
       .csc-logo{
         height: 90px;
@@ -35,6 +37,7 @@
       .hidden{
         display: none;
       }
+
     </style>
   </head>
   <body>
@@ -77,15 +80,18 @@
       <div id="tooplate_middle_wrapper2">
         <div id="tooplate_middle">
 
-          <h1>Helping you achieve the best results<span></span></h1>
-
-          <p>
-            To be the best research consulting firm that provides quality economic, 
-            social and environmental solutions that will help curb youth unemployment, 
-            gender inequality and poverty thereby promoting socio-economic development in Malawi.
-          </p>
-
-          <a href="/about_us"><span>+</span> More</a>
+          <h1 style="padding-left: 35px;">Helping you achieve the best results<span></span></h1>
+          <!--We believe in persistently creating better ways of doing the work we do in order to always excel<br />
+          We believe in engaging in honest transactions that give a true reflection of a situation-->
+          <center>
+            <span class="rotate">
+              We believe in persistently creating better ways of doing the work we do in order to always excel |
+              We believe in engaging in honest transactions that give a true reflection of a situation |
+              CSC promotes a creative work environment where employees are able to come up with innovative solutions |
+              CSC believes in producing high quality work
+            </span>
+          </center>
+          <!--<a href="/about_us"><span>+</span> More</a>-->
 
         </div>
       </div>
@@ -105,6 +111,21 @@
       </div>
 
       <div id="tooplate_sidebar">
+        <h2>Our Vision &amp; Mission</h2>
+
+        <ul class="tooplate_list core-values">
+          <li><a href="#" onclick="expandThis('vision');">Vision</a></li>
+          <span id="vision" class="hidden">
+            To be the best research consulting firm that provides quality economic, social and environmental solutions 
+            that will help curb youth unemployment, gender inequality and poverty thereby promoting socio-economic
+            development in Malawi
+          </span>
+          <li><a href="#" onclick="expandThis('mission');">Mission</a></li>
+          <span id="mission" class="hidden">
+            To provide affordable excellent consulting services in research that will act as a catalyst for growth to
+            our clients while promoting a creative and peaceful work environment.
+          </span>
+        </ul>
 
         <h2>Our Core Values</h2>
 
@@ -165,6 +186,11 @@
         });
 
       }
+      jQuery(".rotate").textrotator({
+        animation: "flipCube", // You can pick the way it animates when rotating through words. Options are dissolve (default), fade, flip, flipUp, flipCube, flipCubeUp and spin.
+        separator: "|", // If you don't want commas to be the separator, you can define a new separator (|, &, * etc.) by yourself using this field.
+        speed: 5000 // How many milliseconds until the next word show.
+      });
     </script>
   </body>
 </html>
