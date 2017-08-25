@@ -116,7 +116,7 @@ class PagesController < ApplicationController
     contact.message = params[:text]
 
     passed_params = {
-      "receiver" => "webtechmw@gmail.com",
+      "receiver" => "creativesolutionsmw@gmail.com",
       "message" => params[:text],
       "subject" => params[:subject],
       "author_name" => params[:author],
