@@ -125,7 +125,7 @@ class PagesController < ApplicationController
 
     if (contact.save)
       Contact.send_email(passed_params)
-      flash[:notice] = "Your message is sent. Thank you for your feedback."
+      flash[:notice] = "Your message is sent. Thank you for contacting us."
       redirect_to("/contact_us") and return
     else
       flash[:error] = "Failed to send your message. Try again"
