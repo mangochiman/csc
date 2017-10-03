@@ -19,5 +19,13 @@ class ApplicationController < ActionController::Base
     #flash[:error] = 'Oops. You need to login before you can view that page.'
     redirect_to ("/login") and return
   end
+
+  def rescue_action(exception)
+    @message = exception.message
+    @backtrace = exception.backtrace.join("\n") unless exception.nil?
+    logger.info @message
+    logger.info @backtrace
+    render :file => "#{RAILS_ROOT}/app/views/errors/404.rhtml", :layout=> false, :status => 404
+  end #if RAILS_ENV == 'production'
   
 end
